@@ -1,5 +1,3 @@
-console.log('[bubble] script cargado, window.pizarron =', window.pizarron);
-
 const bubble = document.getElementById('bubble');
 
 let dragging = false;
@@ -13,7 +11,6 @@ bubble.addEventListener('mousedown', (e) => {
   lastX = e.screenX;
   lastY = e.screenY;
   totalMove = 0;
-  console.log('[bubble] mousedown');
 });
 
 window.addEventListener('mousemove', (e) => {
@@ -27,9 +24,7 @@ window.addEventListener('mousemove', (e) => {
 });
 
 window.addEventListener('mouseup', () => {
-  console.log('[bubble] mouseup totalMove=', totalMove);
   if (dragging && totalMove < CLICK_THRESHOLD) {
-    console.log('[bubble] considerado click, llamando toggleBoard');
     window.pizarron.toggleBoard();
   }
   dragging = false;

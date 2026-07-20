@@ -35,9 +35,6 @@ app.whenReady().then(() => {
 
   bubbleWindow = createBubbleWindow(preloadPath);
   boardWindow = createBoardWindow(preloadPath);
-  bubbleWindow.webContents.on('console-message', (event, level, message) => {
-    console.log('[bubble-console]', message);
-  });
 
   const savedPos = loadBubblePosition();
   if (savedPos) {
@@ -69,7 +66,6 @@ app.whenReady().then(() => {
   });
 
   ipcMain.on('toggle-board', () => {
-    console.log('[main] toggle-board recibido');
     if (boardWindow.isVisible()) {
       boardWindow.hide();
     } else {
