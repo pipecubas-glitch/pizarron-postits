@@ -44,6 +44,7 @@ contextBridge.exposeInMainWorld('pizarron', {
   teamNames: config.teamNames,
   noteColors: config.noteColors,
   toggleBoard: () => ipcRenderer.send('toggle-board'),
+  moveBubbleBy: (dx, dy) => ipcRenderer.send('bubble-move-by', { dx, dy }),
   listNotes,
   createNote,
   updateNote,

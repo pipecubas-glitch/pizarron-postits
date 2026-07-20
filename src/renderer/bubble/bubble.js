@@ -2,23 +2,35 @@ console.log('[bubble] script cargado, window.pizarron =', window.pizarron);
 
 const bubble = document.getElementById('bubble');
 
-let downTime = 0;
-let downX = 0;
-let downY = 0;
+let dragging = false;
+let lastX = 0;
+let lastY = 0;
+let totalMove = 0;
+const CLICK_THRESHOLD = 6;
 
 bubble.addEventListener('mousedown', (e) => {
-  downTime = Date.now();
-  downX = e.screenX;
-  downY = e.screenY;
+  dragging = true;
+  lastX = e.screenX;
+  lastY = e.screenY;
+  totalMove = 0;
   console.log('[bubble] mousedown');
 });
 
-bubble.addEventListener('mouseup', (e) => {
-  const elapsed = Date.now() - downTime;
-  const dist = Math.abs(e.screenX - downX) + Math.abs(e.screenY - downY);
-  console.log('[bubble] mouseup elapsed=', elapsed, 'dist=', dist);
-  if (elapsed < 400 && dist < 6) {
+window.addEventListener('mousemove', (e) => {
+  if (!dragging) return;
+  const dx = e.screenX - lastX;
+  const dy = e.screenY - lastY;
+  lastX = e.screenX;
+  lastY = e.screenY;
+  totalMove += Math.abs(dx) + Math.abs(dy);
+  window.pizarron.moveBubbleBy(dx, dy);
+});
+
+window.addEventListener('mouseup', () => {
+  console.log('[bubble] mouseup totalMove=', totalMove);
+  if (dragging && totalMove < CLICK_THRESHOLD) {
     console.log('[bubble] considerado click, llamando toggleBoard');
     window.pizarron.toggleBoard();
   }
+  dragging = false;
 });

@@ -63,6 +63,11 @@ app.whenReady().then(() => {
     isQuitting = true;
   });
 
+  ipcMain.on('bubble-move-by', (event, { dx, dy }) => {
+    const [x, y] = bubbleWindow.getPosition();
+    bubbleWindow.setPosition(Math.round(x + dx), Math.round(y + dy));
+  });
+
   ipcMain.on('toggle-board', () => {
     console.log('[main] toggle-board recibido');
     if (boardWindow.isVisible()) {
