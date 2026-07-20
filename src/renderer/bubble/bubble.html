@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<title>Burbuja</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  #bubble {
+    width: 64px;
+    height: 64px;
+    margin: 4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd54f, #ff8a65);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    -webkit-app-region: drag;
+  }
+  #bubble:active {
+    transform: scale(0.95);
+  }
+</style>
+</head>
+<body>
+  <div id="bubble" title="Click para abrir el pizarrón">📌</div>
+  <script src="bubble.js"></script>
+</body>
+</html>
