@@ -17,6 +17,7 @@ function createBubbleWindow(preloadPath) {
       preload: preloadPath,
       contextIsolation: true,
       nodeIntegration: false,
+      sandbox: false,
     },
   });
 
@@ -40,6 +41,7 @@ function createBoardWindow(preloadPath) {
       preload: preloadPath,
       contextIsolation: true,
       nodeIntegration: false,
+      sandbox: false,
     },
   });
   win.loadFile(path.join(__dirname, '../renderer/board/board.html'));
