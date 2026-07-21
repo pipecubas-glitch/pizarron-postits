@@ -23,7 +23,7 @@ function createBubbleWindow(preloadPath) {
 
   // Nivel máximo de "always on top" y visible incluso sobre apps en pantalla
   // completa / al cambiar de Space, que es el requisito central de la burbuja.
-  win.setAlwaysOnTop(true, 'screen-saver');
+  win.setAlwaysOnTop(true, 'floating');
   win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
   win.loadFile(path.join(__dirname, '../renderer/bubble/bubble.html'));
   return win;
