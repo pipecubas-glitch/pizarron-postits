@@ -7,6 +7,8 @@ function createBubbleWindow(preloadPath) {
     height: 72,
     frame: false,
     transparent: true,
+    backgroundColor: '#00000000',
+    roundedCorners: false,
     hasShadow: false,
     resizable: false,
     movable: true,
